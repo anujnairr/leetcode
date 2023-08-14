@@ -37,8 +37,6 @@ class Linked_List:
 
 
 ll = Linked_List()
-
-
 ll.insert_at_beginning(10)
 ll.insert_at_beginning(20)
 ll.insert_at_beginning(30)
