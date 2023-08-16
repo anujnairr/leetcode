@@ -3,7 +3,6 @@
 # The digit sum is the sum of all the digits (not necessarily distinct) that appear in nums.
 # Return the absolute difference between the element sum and digit sum of nums.
 # Note that the absolute difference between two integers x and y is defined as |x - y|.
-
 nums = [12, 97, 48, 72, 31, 70, 1, 9, 78, 28, 1, 30, 82,
         17, 43, 44, 53, 12, 73, 16, 74, 24, 79, 9, 51, 77,
         36, 38, 81, 38, 69, 60, 29, 21, 66, 6,
