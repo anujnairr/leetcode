@@ -1,1 +1,1 @@
-This repo contains my leetcode adventures.
+Only way to go is to go the distance.
