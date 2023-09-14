@@ -16,6 +16,8 @@ for i in range(0, len(s), +2):
 
 print(c)
 
+# One line answer
+# return sum([Word.count('*') for Word in s.split('|')][0::2])
 
 # more runtime
 # for i in range(len(s)):
