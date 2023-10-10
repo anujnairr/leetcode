@@ -8,6 +8,18 @@ for i in range(len(nums)+1):
     if i not in nums:
         print(i)
 
+# # Refer: https://leetcode.com/problems/missing-number/solutions/1585333/python-the-best-explanation-bitwise-and-sum/
+# The Gaussian formula is used to work out the sum of a series given the length.
+# The reason we find the difference can be hightlighted by the following example:
+# completeSeries = [1,2,3,4,5,6] (sum = 21)
+# givenNumsList =  [1,2,3, ,5,6] (sum = 17)
+
+# Perform the subtraction
+# completeSeries = [1,2,3,4,5,6] (sum = 21)
+# -
+# givenNumsList  = [1,2,3, ,5,6] (sum = 17)
+# subtraction    = [0,0,0,4,0,0] (sum = 4)
+
 # less run time
 # n = len(nums)
 # return ((n * (n+1)) // 2 ) - sum(nums)
