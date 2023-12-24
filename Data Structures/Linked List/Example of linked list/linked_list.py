@@ -1,6 +1,10 @@
+# You are given the heads of two sorted linked lists list1 and list2.
+# Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+# Return the head of the merged linked list.
+
 class Node:
-    def __init__(self, data=None, next=None):
-        self.data = data
+    def __init__(self, data=0, next=None):
+        self.value = data
         self.next = next
 
 
@@ -8,106 +12,130 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-    def insert_at_beginning(self, data):
+    def insert_at_begin(self, data):
         node1 = Node(data, self.head)
         self.head = node1
 
-    def traversing(self):
-        if self.head is None:
-            print("Illa")
-        else:
-            itr = self.head
-            while itr is not None:
-                print(f"{itr.data}-->")
-                itr = itr.next
+    def print_list(self):
+        if self.head == None:
+            print("List is empty")
 
-    def get_the_motherfucking_length(self):
-        count = 0
-        if self.head is None:
-            return count
-        else:
-            itr = self.head
-            while itr != None:
-                count += 1
-                itr = itr.next
-        return count
-
-    def add_node_at_the_motherfucking_index(self, index, data):
-        count = 1
-        if index < 0 or index > self.get_the_motherfucking_length():
-            print("Motherfucker, give a valid index, please, for fuck's sake.")
-        else:
-            itr = self.head
-            while itr is not None:
-                itr = itr.next
-                count += 1
-                if count == index-1:
-                    node1 = Node(data, itr.next)
-                    itr.next = node1
-                    break
+        ll_print = ""
+        itr = self.head
+        while itr:
+            ll_print += str(itr.value) + "-->"
+            itr = itr.next
+        print(ll_print)
 
     def insert_at_end(self, data):
-        if self.head is None:
-            raise Exception("Sadanam kaiyil illa")
-        else:
-            itr = self.head
-            while itr.next is not None:
-                itr = itr.next
-            node1 = Node(data)
-            itr.next = node1
-
-    def remove_node_at_motherfucking_index(self, index):
-        count = 1
-        if index < 0 or index > self.get_the_motherfucking_length():
-            raise Exception("Myre, nere chovve index thaa")
-        else:
-            itr = self.head
-            while count != index - 1:
-                itr = itr.next
-                count += 1
-            itr.next = itr.next.next
-
-    def insert_after_value(self, data_after, data_to_insert):
-        # Search for first occurance of data_after value in linked list
-        # Now insert data_to_insert after data_after node
+        if self.head == None:
+            print("List is empty")
         itr = self.head
-        while itr is not None:
-            if itr.data == data_after:
-                node1 = Node(data_to_insert, itr.next)
-                itr.next = node1
-
+        while itr:
+            if itr.next == None:
+                end_node = Node(data)
+                itr.next = end_node
+                break
             itr = itr.next
 
-    def remove_by_value(self, data):
-        # Remove first node that contains data
+    def get_length_of_list(self):
+        if self.head == None:
+            print("List is empty")
+        count = 0
         itr = self.head
-        if self.head is None:
-            raise Exception("Linked list is empty")
-        else:
-            while itr is not None:
-                if itr.data == data:
-                    self.head = itr.next
-                    break
-                else:
-                    next_node = itr.next
-                    if next_node.data == data:
-                        itr.next = itr.next.next
-                        break
-                itr = itr.next
+        while itr is not None:
+            count += 1
+            itr = itr.next
+        print(f"The length of list is: {count}")
+
+    def add_node_at_specific_index(self, index, data):
+        if self.head == None:
+            print("List is empty.")
+        itr = self.head
+        count = 0
+        # edge case of adding node at first position (self.head)
+        if index == count:
+            node1 = Node(data, self.head)
+            self.head = node1
+            return
+        while itr is not None:
+            if count == index-1:
+                node1 = Node(data, itr.next)
+                itr.next = node1
+                break
+            itr = itr.next
+            count += 1
+
+    def remove_node_at_specific_index(self, index):
+        if self.head == None:
+            print("List is empty")
+        count = 0
+        itr = self.head
+        # edge case of removing self.head
+        if count == index:
+            self.head = itr.next
+
+        while itr != None:
+            if count == index-1:
+                itr.next = itr.next.next
+                break
+            count += 1
+            itr = itr.next
+
+    def insert_after_specific_value(self, insert_data, after_data):
+        if self.head == None:
+            print("This list is empty")
+        itr = self.head
+        while itr is not None:
+            if after_data == itr.value:
+                node1 = Node(insert_data, itr.next)
+                itr.next = node1
+            itr = itr.next
+
+    def remove_after_specific_value(self, after_data):
+        if self.head == None:
+            print("List is empty")
+        itr = self.head
+        while itr is not None:
+            if after_data == itr.value:
+                itr.next = itr.next.next
+            itr = itr.next
+
+    def remove_by_value(self, remove_value):
+        if self.head == None:
+            print("This list is empty")
+        itr = self.head
+        # edge case of removing self.head
+        if remove_value == itr.value:
+            self.head = itr.next
+            return
+        while itr is not None:
+            temp = itr.next
+            if remove_value == temp.value:
+                itr.next = itr.next.next
+                break
+            itr = itr.next
 
 
-linked_list = LinkedList()
-linked_list.insert_at_beginning(60)
-linked_list.insert_at_beginning(50)
-linked_list.insert_at_beginning(40)
-linked_list.insert_at_beginning(30)
-linked_list.insert_at_beginning(10)
-# linked_list.add_node_at_the_motherfucking_index(3, 1000)
-# linked_list.traversing()
-# linked_list.insert_at_end(20)
-# linked_list.remove_node_at_motherfucking_index(3)
-# linked_list.traversing()
-# linked_list.insert_after_value(40, 100)
-# linked_list.traversing()
-linked_list.remove_by_value(10)
-linked_list.traversing()
+if __name__ == '__main__':
+    ll = LinkedList()
+    ll.insert_at_begin(2)
+    ll.insert_at_begin(1)
+    ll.insert_at_end(3)
+    ll.print_list()
+    ll.get_length_of_list()
+    ll.add_node_at_specific_index(2, 0)
+    ll.insert_at_end(4)
+    ll.print_list()
+    ll.remove_node_at_specific_index(3)
+    ll.print_list()
+    ll.insert_after_specific_value(10, 2)
+    ll.print_list()
+    ll.remove_after_specific_value(0)
+    ll.print_list()
+    ll.remove_by_value(10)
+    ll.print_list()
+    ll.add_node_at_specific_index(0, 9)
+    ll.print_list()
+    ll.remove_node_at_specific_index(0)
+    ll.print_list()
