@@ -116,6 +116,21 @@ class LinkedList:
                 break
             itr = itr.next
 
+    def middle_of_linked_list(self):
+        if self.head == None:
+            print("List is empty")
+            return
+        itr = self.head
+        count = 0
+        arr = []
+        while itr is not None:
+            count += 1
+            arr.append(itr.value)
+            itr = itr.next
+
+        middle = int(count/2)
+        print(arr[middle])
+
 
 if __name__ == '__main__':
     ll = LinkedList()
@@ -139,3 +154,4 @@ if __name__ == '__main__':
     ll.print_list()
     ll.remove_node_at_specific_index(0)
     ll.print_list()
+    ll.middle_of_linked_list()
