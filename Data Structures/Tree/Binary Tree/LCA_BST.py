@@ -21,11 +21,20 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        while True:
-            if root.val < min(p.val, q.val):
-                root = root.right
-            elif root.val > max(p.val, q.val):
-                root = root.left
-
+        cur = root
+        while cur:
+            if p.val > cur.val and q.val > cur.val:
+                cur = cur.right
+            elif p.val < cur.val and q.val < cur.val:
+                cur = cur.left
             else:
-                return root
+                return cur
+
+        # while True:
+        #     if root.val < min(p.val, q.val):
+        #         root = root.right
+        #     elif root.val > max(p.val, q.val):
+        #         root = root.left
+
+        #     else:
+        #         return root
